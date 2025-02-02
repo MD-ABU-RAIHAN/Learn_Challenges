@@ -1,7 +1,7 @@
 
 // Guess My Number!
-const secretNumber = Math.trunc(Math.random() * 20) + 1;
-const score = 20;
+let secretNumber = Math.trunc(Math.random() * 20) + 1;
+let score = 20;
 let highScore = 0;
 
 document.getElementById('check').addEventListener('click', () => {
@@ -15,14 +15,33 @@ document.getElementById('check').addEventListener('click', () => {
         document.querySelector('.number').textContent = secretNumber;
 
         document.body.style.background = "#60b347"
-        
-        if(score> highScore)
+
+        if (score > highScore) {
+            highScore = score;
+            document.getElementById('highscore').textContent = highScore;
+        }
 
     } else if (guess !== secretNumber) {
-        if (s) {
-           
-       }
+        if (score >= 1) {
+            message.textContent = guess > secretNumber ? '📈 Too Hign!' : "📉 Too Low!";
+            score--;
+            document.getElementById('score').textContent = score;
+        } else {
+            message.textContent = "💥 You Lost The Game! "
+        }
     }
+});
+
+document.getElementById('again').addEventListener('click', () => {
+    secretNumber = Math.trunc(Math.random() * 20) + 1;
+    score = 20;
+    document.getElementById("score").textContent = score;
+    document.getElementById('guess').value = "";
+    document.querySelector('.message').textContent = "Start Guessing...";
+    document.querySelector('.number').textContent = "?";
+    document.body.style.background = "#fff";
+
+
 })
 
 /*
