@@ -1,3 +1,128 @@
+
+// Guess My Number!
+const secretNumber = Math.trunc(Math.random() * 20) + 1;
+const score = 20;
+let highScore = 0;
+
+document.getElementById('check').addEventListener('click', () => {
+    const guess = Number(document.getElementById('guess').value);
+    const message = document.querySelector('.message');
+
+    if (!guess) {
+        message.textContent = "⛔ No Number!";
+    } else if (guess === secretNumber) {
+        message.textContent = "🎉 Correct Number!";
+        document.querySelector('.number').textContent = secretNumber;
+
+        document.body.style.background = "#60b347"
+        
+        if(score> highScore)
+
+    } else if (guess !== secretNumber) {
+        if (s) {
+           
+       }
+    }
+})
+
+/*
+Coding Challenge #4
+Let's improve Steven's tip calculator even more, this time using loops!
+Your tasks:
+1. Create an array 'bills' containing all 10 test bill values
+2. Create empty arrays for the tips and the totals ('tips' and 'totals')
+3. Use the 'calcTip' function we wrote before (no need to repeat) to calculate
+tips and total values (bill + tip) for every bill value in the bills array. Use a for
+loop to perform the 10 calculations!
+Test data: 22, 295, 176, 440, 37, 105, 10, 1100, 86 and 52
+Hints: Call ‘calcTip ‘in the loop and use the push method to add values to the
+tips and totals arrays 😉
+Bonus:
+4. Bonus: Write a function 'calcAverage' which takes an array called 'arr' as
+an argument. This function calculates the average of all numbers in the given
+array. This is a difficult challenge (we haven't done this before)! Here is how to
+solve it:
+4.1. First, you will need to add up all values in the array. To do the addition,
+start by creating a variable 'sum' that starts at 0. Then loop over the
+array using a for loop. In each iteration, add the current value to the
+'sum' variable. This way, by the end of the loop, you have all values
+added together
+4.2. To calculate the average, divide the sum you calculated before by the
+length of the array (because that's the number of elements)
+4.3. Call the function with the 'totals' array
+GOOD LUCK 
+*/
+const tipCalculator = (bills) => {
+
+    bills.forEach(bill => {
+        const tip = bill >= 50 && bill <= 300 ? bill * (15 / 100).toFixed(2) : bill * (20 / 100).toFixed(2);
+        tips.push(tip);
+        totals.push(tip + bill);
+    });
+
+    console.log(bills.reduce((a, bill) => a + bill, 0) / bills.length);
+
+}
+
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+tipCalculator(bills);
+console.log(tips, totals)
+
+/*
+Coding Challenge #3
+Let's go back to Mark and John comparing their BMIs! This time, let's use objects to
+implement the calculations! Remember: BMI = mass / height ** 2 = mass
+/ (height * height) (mass in kg and height in meter)
+Your tasks:
+1. For each of them, create an object with properties for their full name, mass, and
+height (Mark Miller and John Smith)
+2. Create a 'calcBMI' method on each object to calculate the BMI (the same
+method on both objects). Store the BMI value to a property, and also return it
+from the method
+3. Log to the console who has the higher BMI, together with the full name and the
+respective BMI. Example: "John's BMI (28.3) is higher than Mark's (23.9)!"
+Test data: Marks weights 78 kg and is 1.69 m tall. John weights 92 kg and is 1.95 m
+tall.
+GOOD LUCK 😀
+*/
+
+const mark = {
+    fullName: 'Mark Miller',
+    mass: 78,
+    height: 1.69,
+    calcBMI: function () {
+        this.bmi = this.mass / this.height ** 2;
+        return this.bmi;
+    }
+}
+
+const john = {
+    fullName: "Johan Mill",
+    mass: 92,
+    height: 1.95,
+    calcBMI: function () {
+        this.bmi = this.mass / this.height ** 2;
+        return this.bmi;
+    }
+}
+
+mark.calcBMI();
+john.calcBMI();
+
+if (mark.bmi > john.bmi) {
+    console.log(`${mark.fullName}'s BMI ${mark.bmi} is higher than ${john.fullName}'s ${john.bmi}!`);
+} else if (mark.bmi < john.bmi) {
+    console.log(`${mark.fullName}'s BMI ${mark.bmi} is Lower than ${john.fullName}'s ${john.bmi}!`);
+}
+
+
+
+
+
+
+
 // Coding Challenge #1
 
 /* Mark and John are trying to compare their BMI(Body Mass Index), which is 
@@ -82,16 +207,16 @@ if (avgDolphins > avgKoalas && avgDolphins >= 100) {
 
 /*
 Coding Challenge #4
-Steven wants to build a very simple tip calculator for whenever he goes eating in a 
-restaurant. In his country, it's usual to tip 15% if the bill value is between 50 and 
+Steven wants to build a very simple tip calculator for whenever he goes eating in a
+restaurant. In his country, it's usual to tip 15% if the bill value is between 50 and
 300. If the value is different, the tip is 20%.
 Your tasks:
-1. Calculate the tip, depending on the bill value. Create a variable called 'tip' for 
-this. It's not allowed to use an if/else statement � (If it's easier for you, you can 
-start with an if/else statement, and then try to convert it to a ternary 
+1. Calculate the tip, depending on the bill value. Create a variable called 'tip' for
+this. It's not allowed to use an if/else statement � (If it's easier for you, you can
+start with an if/else statement, and then try to convert it to a ternary
 operator!)
-2. Print a string to the console containing the bill value, the tip, and the final value 
-(bill + tip). Example: “The bill was 275, the tip was 41.25, and the total value 
+2. Print a string to the console containing the bill value, the tip, and the final value
+(bill + tip). Example: “The bill was 275, the tip was 41.25, and the total value
 316.25”
 Test data:
 § Data 1: Test for bill values 275, 40 and 430
@@ -100,10 +225,12 @@ Hints:
 § Value X is between 50 and 300, if it's >= 50 && <= 300 �
 GOOD LUCK �
 */
-const tipCalculator = (bill) => {
-    const tip = bill >= 50 && bill <= 300 ? bill * (15 / 100).toFixed(2) : bill * (20 / 100).toFixed(2);
-    return `The bill was ${bill}, the tip was ${tip}, and the total value ${tip + bill}`
-}
-console.log(tipCalculator(275));
-console.log(tipCalculator(40));
-console.log(tipCalculator(430));
+// const tipCalculator = (bill) => {
+//     const tip = bill >= 50 && bill <= 300 ? bill * (15 / 100).toFixed(2) : bill * (20 / 100).toFixed(2);
+//     return `The bill was ${bill}, the tip was ${tip}, and the total value ${tip + bill}`
+// }
+// console.log(tipCalculator(275));
+// console.log(tipCalculator(40));
+// console.log(tipCalculator(430));
+
+
