@@ -30,6 +30,11 @@ const newGame = () => {
     labelCurrent1.textContent = 0;
     labelCurrent2.textContent = 0;
     imgDice.classList.add("hidden");
+
+    playing = true;
+    scores = [0, 0];
+    currentScore = 0;
+    activePlayer = 1;
 }
 newGame();
 
