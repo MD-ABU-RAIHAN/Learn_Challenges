@@ -1,5 +1,38 @@
 'use strict'
 
+console.log("============ SET ===========");
+const orderSet = new Set([
+    'Pasta',
+    'Pizza',
+    'Pizza',
+    'Risotto',
+    'Pasta',
+    'Pizza',
+])
+console.log(orderSet);
+
+console.log(new Set("Shegun"));
+console.log(orderSet.has("Pizza"));
+console.log(orderSet.add("Chili"));
+// console.log(orderSet.delete('Pasta'));
+// orderSet.clear();
+console.log(orderSet)
+
+for (const order of orderSet) console.log(order);
+
+const staff = ['waiter', 'chef', 'waiter','manager','chef','clener'];
+const staffUnique = [...new Set(staff)];
+
+console.log(staffUnique);
+console.log(new Set(staff).size);
+console.log(new Set("md. abu raihan").size)
+
+
+
+
+
+
+console.log("============ C2 ============")
 const game = {
     team1: 'Bayern Munich',
     team2: 'Borrussia Dortmund',
@@ -57,6 +90,18 @@ average /= Object.values(game.odds).length;
 console.log(average);
 
 /* ************* 3 ************ */
-for (const odd of game.odds) {
+for (const [team, odd] of Object.entries(game.odds)) {
+    const teamStr = team === 'x' ? 'draw' : `Victury ${game[team]}`;
+    console.log(`Odd of  ${teamStr}: ${odd}`);
 
 }
+
+
+/* ************* 4 ************ */
+const scorers = {};
+for (const player of game.scored) {
+    scorers[player] ? scorers[player]++ : scorers[player] = 1;
+}
+console.log(scorers)
+
+
