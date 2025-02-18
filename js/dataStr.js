@@ -1,4 +1,29 @@
-'use strict'
+// 'use strict'
+
+
+console.log("============ MAP ===========");
+const rest = new Map();
+rest.set('name', 'ArtSoftBD');
+rest.set(1, 'Firenze, Italy');
+console.log(rest.set(2, "Bangladesh"));
+
+rest
+    .set('categories', ['Web Design', 'Devlopment', 'Graphic Design'])
+    .set('open', 11)
+    .set("close", 23)
+    .set(true, 'we are open ')
+    .set(false, 'we are close');
+
+console.log(rest.get('name'));
+
+const time = 8;
+console.log(rest.get(time > rest.get("open")) && rest.get(time < rest.get('close')));
+
+rest.set(document.querySelector('h1'), "Hading");
+
+console.log(rest.size);
+console.log(rest);
+
 
 console.log("============ SET ===========");
 const orderSet = new Set([
@@ -20,7 +45,7 @@ console.log(orderSet)
 
 for (const order of orderSet) console.log(order);
 
-const staff = ['waiter', 'chef', 'waiter','manager','chef','clener'];
+const staff = ['waiter', 'chef', 'waiter', 'manager', 'chef', 'clener'];
 const staffUnique = [...new Set(staff)];
 
 console.log(staffUnique);
